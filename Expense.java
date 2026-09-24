@@ -1,31 +1,35 @@
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Expense {
-    private final String name;
+public abstract class Expense {
+    private final String description;
     private final double price;
     private final String category;
     private final LocalDate date;
 
-    public Expense(String name, double price, String category) {
-        this(name, price, category, LocalDate.now());
+    protected Expense(
+            String description,
+            double price,
+            String category
+    ) {
+        this(description, price, category, LocalDate.now());
     }
 
-    public Expense(
-            String name,
+    protected Expense(
+            String description,
             double price,
             String category,
             LocalDate date
     ) {
-        if (name == null || name.isBlank()) {
+        if (description == null || description.isBlank()) {
             throw new IllegalArgumentException(
-                    "Expense name cannot be blank"
+                    "Expense description cannot be blank"
             );
         }
 
         if (price < 0 || Double.isNaN(price) || Double.isInfinite(price)) {
             throw new IllegalArgumentException(
-                    "Expense price must be a valid, non-negative number"
+                    "Expense price must be valid and non-negative"
             );
         }
 
@@ -35,7 +39,7 @@ public class Expense {
             );
         }
 
-        this.name = name.trim();
+        this.description = description.trim();
         this.price = price;
         this.category = category.trim();
         this.date = Objects.requireNonNull(
@@ -44,8 +48,8 @@ public class Expense {
         );
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public double getPrice() {
@@ -58,5 +62,16 @@ public class Expense {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s: $%.2f (%s) on %s",
+                description,
+                price,
+                category,
+                date
+        );
     }
 }

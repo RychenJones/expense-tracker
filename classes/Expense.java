@@ -2,13 +2,13 @@ package classes;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class Expense {
+public class Expense {
     private final String description;
     private final double price;
     private final String category;
     private final LocalDate date;
 
-    protected Expense(
+    public Expense(
             String description,
             double price,
             String category
@@ -16,7 +16,7 @@ public abstract class Expense {
         this(description, price, category, LocalDate.now());
     }
 
-    protected Expense(
+    public Expense(
             String description,
             double price,
             String category,

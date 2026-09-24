@@ -39,4 +39,16 @@ public class RecurringExpense extends Expense {
     public String getFrequency() {
         return frequency;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s: $%.2f (%s, %s) on %s",
+                getDescription(),
+                getPrice(),
+                getCategory(),
+                getFrequency(),
+                getDate()
+        );
+    }
 }

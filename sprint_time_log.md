@@ -31,8 +31,26 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/22/26  | 4:30     | IM     | Practiced if/else and loops, made plan.    | 30          |
 | 9/22/26  | 11:20    | IM     | Created class scaffolding and Expense.     | 30          |
 | 9/23/26  | 10:15    | TP     | Planned out our project.                   | 60          |
+| 9/24/26  | 4:30     | IM     |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+|          |          |        |                                            |             |
+
 
 _Note: Add more rows as needed._
 

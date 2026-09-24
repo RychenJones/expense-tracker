@@ -9,7 +9,7 @@
 * Takes daily expenses (expense, price, category) and stores it by date in another file
 * contains input validation, assert statements, and test functions(?)
 * shows analytics for category percentages, average monthly, weekly costs for each category, total weekly, monthly spending
-* Expense class, expenseTracker, user, filemanager, recurring expense
+* Expense class, user, filemanager, recurring expense
 
 
 

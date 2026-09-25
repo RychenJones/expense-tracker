@@ -3,20 +3,22 @@ package classes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
-public class login {
-    private String username;
-    private String password;
-    private HashMap<String, String> users;
+public class Account {
+    private final HashMap<String, String> users;
+    private String filename;
 
-    public login(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public Account() {
         users = new HashMap<>();
+        this.filename = "users.txt";
     }
 
-    public void readUsers(String filename) throws IOException {
+    public Map<String, String> readUsers() throws IOException {
+        users.clear();
+
         try (BufferedReader reader = new BufferedReader(
                 new FileReader(filename))) {
             String line;
@@ -29,5 +31,10 @@ public class login {
                 }
             }
         }
+        return Collections.unmodifiableMap(users);
+    }
+
+    protected String getFilename() {
+        return filename;
     }
 }

@@ -31,7 +31,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/22/26  | 4:30     | IM     | Practiced if/else and loops, made plan.    | 30          |
 | 9/22/26  | 11:20    | IM     | Created class scaffolding and Expense.     | 30          |
 | 9/23/26  | 10:15    | TP     | Planned out our project.                   | 60          |
-| 9/24/26  | 4:30     | IM     |                                            |             |
+| 9/24/26  | 4:30     | IM     | Built RecurringExpense and FileManager.    | 90          |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
@@ -58,7 +58,7 @@ _Note: Add more rows as needed._
 
 |Categroy                       |Total Time (Hours:Minutes)|
 |-------------------------------|:------------------------:|
-|IM - Individual Module         | 2:00                     |
+|IM - Individual Module         | 3:30                     |
 |TP - Team Project              | 1:00                     |
 |MTG - Class Meetings           | 1:00                     |
 |**TOTAL**                      |                          |

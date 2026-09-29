@@ -125,19 +125,6 @@ public class Main {
         }
     }
 
-    private static void viewExpenses(ArrayList<Expense> expenses) {
-        System.out.println("\nYour expenses:");
-
-        if (expenses.isEmpty()) {
-            System.out.println("No expenses have been recorded yet.");
-            return;
-        }
-
-        for (int index = 0; index < expenses.size(); index++) {
-            System.out.println((index + 1) + ". " + expenses.get(index));
-        }
-    }
-
     private static void recordExpense(
             Scanner scanner,
             ArrayList<Expense> expenses,
@@ -187,6 +174,19 @@ public class Main {
         String frequency = readFrequency(scanner);
 
         return new RecurringExpense(name, price, category, frequency);
+    }
+
+    private static void viewExpenses(ArrayList<Expense> expenses) {
+        System.out.println("\nYour expenses:");
+
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses have been recorded yet.");
+            return;
+        }
+
+        for (int index = 0; index < expenses.size(); index++) {
+            System.out.println((index + 1) + ". " + expenses.get(index));
+        }
     }
 
     private static double readPrice(Scanner scanner) {

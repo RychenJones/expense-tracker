@@ -3,28 +3,28 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Expense {
-    private final String description;
+    private final String name;
     private final double price;
     private final String category;
     private final LocalDate date;
 
     public Expense(
-            String description,
+            String name,
             double price,
             String category
     ) {
-        this(description, price, category, LocalDate.now());
+        this(name, price, category, LocalDate.now());
     }
 
     public Expense(
-            String description,
+            String name,
             double price,
             String category,
             LocalDate date
     ) {
-        if (description == null || description.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException(
-                    "Expense description cannot be blank"
+                    "Expense name cannot be blank"
             );
         }
 
@@ -40,7 +40,7 @@ public class Expense {
             );
         }
 
-        this.description = description.trim();
+        this.name = name.trim();
         this.price = price;
         this.category = category.trim();
         this.date = Objects.requireNonNull(
@@ -49,8 +49,8 @@ public class Expense {
         );
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
     public double getPrice() {
@@ -69,7 +69,7 @@ public class Expense {
     public String toString() {
         return String.format(
                 "%s: $%.2f (%s) on %s",
-                description,
+                name,
                 price,
                 category,
                 date

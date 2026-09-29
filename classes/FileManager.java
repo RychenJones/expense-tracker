@@ -58,7 +58,7 @@ public class FileManager {
             throw new IllegalArgumentException("Invalid expense format");
         }
 
-        String description = line.substring(0, priceStart);
+        String name = line.substring(0, priceStart);
         double price = Double.parseDouble(
                 line.substring(priceStart + 3, detailsStart)
         );
@@ -67,13 +67,13 @@ public class FileManager {
 
         int frequencySeparator = details.indexOf(", ");
         if (frequencySeparator < 0) {
-            return new Expense(description, price, details, date);
+            return new Expense(name, price, details, date);
         }
 
         String category = details.substring(0, frequencySeparator);
         String frequency = details.substring(frequencySeparator + 2);
         return new RecurringExpense(
-                description,
+                name,
                 price,
                 category,
                 date,

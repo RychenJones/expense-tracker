@@ -10,22 +10,22 @@ public class RecurringExpense extends Expense {
     private final String frequency;
 
     public RecurringExpense(
-            String description,
+            String name,
             double price,
             String category,
             String frequency
     ) {
-        this(description, price, category, LocalDate.now(), frequency);
+        this(name, price, category, LocalDate.now(), frequency);
     }
 
     public RecurringExpense(
-            String description,
+            String name,
             double price,
             String category,
             LocalDate date,
             String frequency
     ) {
-        super(description, price, category, date);
+        super(name, price, category, date);
         
         if (frequency == null || frequency.isBlank()) {
             throw new IllegalArgumentException(
@@ -44,7 +44,7 @@ public class RecurringExpense extends Expense {
     public String toString() {
         return String.format(
                 "%s: $%.2f (%s, %s) on %s",
-                getDescription(),
+                getName(),
                 getPrice(),
                 getCategory(),
                 getFrequency(),

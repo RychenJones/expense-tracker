@@ -36,7 +36,8 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/25/26  | 1:00     | IM     | Working on CreateAccount.                  | 30          |
 | 9/25/26  | 1:45     | IM     | ManageAccount - finished MVP classes.      | 70          |
 | 9/27/26  | 12:20    | TP     | Created repo, README, and PocketBase.      | 75          |
-| 9/28/26  | 9:20     | IM     |                                            |             |
+| 9/28/26  | 10:15    | MTG    | Working on assignments.                    | 60          |
+| 9/28/26  | 9:20     | IM     | Built out main - account, log, and read.   | 60          |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
@@ -58,7 +59,7 @@ _Note: Add more rows as needed._
 
 |Categroy                       |Total Time (Hours:Minutes)|
 |-------------------------------|:------------------------:|
-|IM - Individual Module         | 5:10 / 10:00             |
+|IM - Individual Module         | 6:10 / 10:00             |
 |TP - Team Project              | 2:15 / 4:00              |
-|MTG - Class Meetings           | 2:00 / 4:00              |
-|**TOTAL**                      | 9:25 / 18:00             |
+|MTG - Class Meetings           | 3:00 / 4:00              |
+|**TOTAL**                      | 11:25 / 18:00             |

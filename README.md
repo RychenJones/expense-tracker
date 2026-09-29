@@ -1,15 +1,6 @@
 # PLAN (remove later)
-* read and write to/from file
-* conditionals
-* loops
-* functions
-* classes
-* Data structure from Java Collection Framework (such as ArrayList, TreeSet, or HashMap)
-*
-* Takes daily expenses (expense, price, category) and stores it by date in another file
-* contains input validation, assert statements, and test functions(?)
+
 * shows analytics for category percentages, average monthly, weekly costs for each category, total weekly, monthly spending
-* Expense class, user, filemanager, recurring expense
 
 
 

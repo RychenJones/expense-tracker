@@ -90,7 +90,7 @@ public class Main {
 
     private static void postLoginMenu(Scanner scanner, User user) {
         ArrayList<Expense> expenses = new ArrayList<>();
-        String expenseFilename = user.getUsername();
+        String expenseFilename = user.getUsername() + ".txt";
         FileManager fileManager = new FileManager(expenseFilename, expenses);
 
         if (new File(expenseFilename).exists()) {
@@ -113,9 +113,7 @@ public class Main {
 
             switch (choice) {
                 case "1" -> recordExpense(scanner, expenses, fileManager);
-                case "2" -> System.out.println(
-                        "Viewing expenses is not available yet."
-                );
+                case "2" -> viewExpenses(expenses);
                 case "3" -> {
                     System.out.println("Goodbye!");
                     loggedIn = false;
@@ -124,6 +122,19 @@ public class Main {
                         "Please choose 1, 2, or 3."
                 );
             }
+        }
+    }
+
+    private static void viewExpenses(ArrayList<Expense> expenses) {
+        System.out.println("\nYour expenses:");
+
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses have been recorded yet.");
+            return;
+        }
+
+        for (int index = 0; index < expenses.size(); index++) {
+            System.out.println((index + 1) + ". " + expenses.get(index));
         }
     }
 

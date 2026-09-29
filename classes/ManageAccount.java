@@ -12,16 +12,20 @@ public class ManageAccount extends Account {
             String password,
             String newUsername
     ) throws IOException {
-        Map<String, String> currentUsers = readUsers();
+        Map<String, User> currentUsers = readUsers();
         if (!passwordMatches(currentUsers, username, password)
                 || !validUsername(newUsername)
                 || currentUsers.containsKey(newUsername)) {
             return false;
         }
 
-        HashMap<String, String> updatedUsers = new HashMap<>(currentUsers);
+        HashMap<String, User> updatedUsers = new HashMap<>(currentUsers);
+        User currentUser = updatedUsers.get(username);
         updatedUsers.remove(username);
-        updatedUsers.put(newUsername, password);
+        updatedUsers.put(
+                newUsername,
+                new User(currentUser.getName(), newUsername, password)
+        );
         writeUsers(updatedUsers);
         return true;
     }
@@ -31,14 +35,18 @@ public class ManageAccount extends Account {
             String currentPassword,
             String newPassword
     ) throws IOException {
-        Map<String, String> currentUsers = readUsers();
+        Map<String, User> currentUsers = readUsers();
         if (!passwordMatches(currentUsers, username, currentPassword)
                 || !validPassword(newPassword)) {
             return false;
         }
 
-        HashMap<String, String> updatedUsers = new HashMap<>(currentUsers);
-        updatedUsers.put(username, newPassword);
+        HashMap<String, User> updatedUsers = new HashMap<>(currentUsers);
+        User currentUser = updatedUsers.get(username);
+        updatedUsers.put(
+                username,
+                new User(currentUser.getName(), username, newPassword)
+        );
         writeUsers(updatedUsers);
         return true;
     }
@@ -47,34 +55,38 @@ public class ManageAccount extends Account {
             String username,
             String password
     ) throws IOException {
-        Map<String, String> currentUsers = readUsers();
+        Map<String, User> currentUsers = readUsers();
         if (!passwordMatches(currentUsers, username, password)) {
             return false;
         }
 
-        HashMap<String, String> updatedUsers = new HashMap<>(currentUsers);
+        HashMap<String, User> updatedUsers = new HashMap<>(currentUsers);
         updatedUsers.remove(username);
         writeUsers(updatedUsers);
         return true;
     }
 
-    private void writeUsers(Map<String, String> users)
+    private void writeUsers(Map<String, User> users)
             throws IOException {
         try (PrintWriter writer = new PrintWriter(
                 new FileWriter(getFilename()))) {
-            for (Map.Entry<String, String> user : users.entrySet()) {
-                writer.println(user.getKey() + "|" + user.getValue());
+            for (User user : users.values()) {
+                writer.println(
+                        user.getName() + "|"
+                                + user.getUsername() + "|"
+                                + user.getPassword()
+                );
             }
         }
     }
 
     private boolean passwordMatches(
-            Map<String, String> users,
+            Map<String, User> users,
             String username,
             String password
     ) {
-        return users.containsKey(username)
-                && users.get(username).equals(password);
+        User user = users.get(username);
+        return user != null && user.getPassword().equals(password);
     }
 
     private boolean validUsername(String username) {

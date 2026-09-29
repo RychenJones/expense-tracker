@@ -1,4 +1,5 @@
 import classes.CreateAccount;
+import classes.LoginAccount;
 import classes.User;
 
 import java.io.IOException;
@@ -8,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         CreateAccount accountCreator = new CreateAccount();
+        LoginAccount loginAccount = new LoginAccount();
 
         System.out.println("Welcome to the Expense Tracker!");
 
@@ -22,10 +24,13 @@ public class Main {
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1" -> System.out.println("Login is not available yet.");
+                case "1" -> {
+                    if (login(scanner, loginAccount)) {
+                        running = false;
+                    }
+                }
                 case "2" -> {
                     createAccount(scanner, accountCreator);
-                    running = false;
                 }
                 case "3" -> {
                     System.out.println("Goodbye!");
@@ -39,13 +44,52 @@ public class Main {
         scanner.close();
     }
 
+    private static boolean login(
+            Scanner scanner,
+            LoginAccount loginAccount
+    ) {
+        System.out.println("\nLog in");
+
+        String username = readRequired(scanner, "Enter your username: ");
+        String password = readRequired(scanner, "Enter your password: ");
+
+        try {
+            User user = loginAccount.authenticate(username, password);
+
+            if (user != null) {
+                System.out.println("Login successful. Welcome back, "
+                        + user.getName() + "!");
+                return true;
+            }
+
+            System.out.println("Incorrect username or password.");
+        } catch (IOException exception) {
+            System.out.println("Unable to access existing accounts.");
+        }
+
+        return false;
+    }
+
     private static void createAccount(
             Scanner scanner,
             CreateAccount accountCreator
     ) {
         System.out.println("\nCreate an account");
 
-        String name = readRequired(scanner, "Enter your name: ");
+        String name = "";
+        boolean validName = false;
+
+        while (!validName) {
+            name = readRequired(scanner, "Enter your name: ");
+            validName = accountCreator.validateName(name);
+
+            if (!validName) {
+                System.out.println(
+                        "Name cannot be blank or contain '|'."
+                );
+            }
+        }
+
         String username = "";
         boolean validUsername = false;
 
@@ -88,7 +132,11 @@ public class Main {
         User user = new User(name, username, password);
 
         try {
-            accountCreator.addUser(user.getUsername(), user.getPassword());
+            accountCreator.addUser(
+                    user.getName(),
+                    user.getUsername(),
+                    user.getPassword()
+            );
             System.out.println(
                     "Account created successfully. Welcome, "
                             + user.getName() + "!"

@@ -6,12 +6,15 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+// Provides operations for changing and deleting user accounts.
 public class ManageAccount extends Account {
+    // Changes a user's username after verifying the current password.
     public boolean changeUsername(
             String username,
             String password,
             String newUsername
     ) throws IOException {
+        // Load the current accounts before making any changes.
         Map<String, User> currentUsers = readUsers();
         if (!passwordMatches(currentUsers, username, password)
                 || !validUsername(newUsername)
@@ -34,11 +37,13 @@ public class ManageAccount extends Account {
         return true;
     }
 
+    // Replaces a user's password after verifying the current password.
     public boolean changePassword(
             String username,
             String currentPassword,
             String newPassword
     ) throws IOException {
+        // Load the current accounts before making any changes.
         Map<String, User> currentUsers = readUsers();
         if (!passwordMatches(currentUsers, username, currentPassword)
                 || !validPassword(newPassword)) {
@@ -59,10 +64,12 @@ public class ManageAccount extends Account {
         return true;
     }
 
+    // Deletes an account after verifying its username and password.
     public boolean deleteAccount(
             String username,
             String password
     ) throws IOException {
+        // Load the current accounts before making any changes.
         Map<String, User> currentUsers = readUsers();
         if (!passwordMatches(currentUsers, username, password)) {
             return false;
@@ -74,6 +81,7 @@ public class ManageAccount extends Account {
         return true;
     }
 
+    // Writes all user records back to the users file.
     private void writeUsers(Map<String, User> users)
             throws IOException {
         try (PrintWriter writer = new PrintWriter(
@@ -88,6 +96,7 @@ public class ManageAccount extends Account {
         }
     }
 
+    // Checks whether the supplied password matches the user's stored hash.
     private boolean passwordMatches(
             Map<String, User> users,
             String username,
@@ -98,12 +107,14 @@ public class ManageAccount extends Account {
                 && PasswordHasher.matches(password, user.getPassword());
     }
 
+    // Checks that a username can be safely stored in the file format.
     private boolean validUsername(String username) {
         return username != null
                 && !username.isBlank()
                 && !username.contains("|");
     }
 
+    // Checks that a password meets the minimum storage requirements.
     private boolean validPassword(String password) {
         return password != null
                 && password.length() >= 6

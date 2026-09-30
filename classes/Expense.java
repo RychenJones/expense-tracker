@@ -2,13 +2,15 @@ package classes;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Expense {
+// Stores the information shared by all types of expenses.
+public abstract class Expense {
     private final String name;
     private final double price;
     private final String category;
     private final LocalDate date;
 
-    public Expense(
+    // Creates an expense using today's date.
+    protected Expense(
             String name,
             double price,
             String category
@@ -16,7 +18,8 @@ public class Expense {
         this(name, price, category, LocalDate.now());
     }
 
-    public Expense(
+    // Creates an expense with the provided date and validates its values.
+    protected Expense(
             String name,
             double price,
             String category,
@@ -49,30 +52,24 @@ public class Expense {
         );
     }
 
+    // Returns the name of the expense.
     public String getName() {
         return name;
     }
 
+    // Returns the expense amount.
     public double getPrice() {
         return price;
     }
 
+    // Returns the category assigned to the expense.
     public String getCategory() {
         return category;
     }
 
+    // Returns the date the expense was recorded.
     public LocalDate getDate() {
         return date;
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "%s: $%.2f (%s) on %s",
-                name,
-                price,
-                category,
-                date
-        );
-    }
 }

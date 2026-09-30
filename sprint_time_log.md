@@ -39,8 +39,8 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/28/26  | 10:15    | MTG    | Working on assignments.                    | 60          |
 | 9/28/26  | 9:20     | IM     | Built out main - account, log, and read.   | 60          |
 | 9/29/26  | 11:35    | IM     | Analytics class, delete, and hashing.      | 50          |
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
+| 9/30/26  | 10:15    | MTG    | Presentations                              | 60          |
+| 9/30/26  | 2:45     | IM     |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
@@ -61,5 +61,5 @@ _Note: Add more rows as needed._
 |-------------------------------|:------------------------:|
 |IM - Individual Module         | 7:00 / 10:00             |
 |TP - Team Project              | 2:15 / 4:00              |
-|MTG - Class Meetings           | 3:00 / 4:00              |
-|**TOTAL**                      | 12:15 / 18:00            |
+|MTG - Class Meetings           | 4:00 / 4:00              |
+|**TOTAL**                      | 13:15 / 18:00            |

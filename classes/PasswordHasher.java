@@ -8,6 +8,7 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+// Provides password hashing and password verification utilities.
 public final class PasswordHasher {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA256";
     private static final int ITERATIONS = 600_000;
@@ -15,9 +16,11 @@ public final class PasswordHasher {
     private static final int KEY_LENGTH = 256;
     private static final SecureRandom RANDOM = new SecureRandom();
 
+    // Prevents this utility class from being instantiated.
     private PasswordHasher() {
     }
 
+    // Creates a salted PBKDF2 hash and formats it for storage.
     public static String hash(String password) {
         byte[] salt = new byte[SALT_LENGTH];
         RANDOM.nextBytes(salt);
@@ -27,19 +30,13 @@ public final class PasswordHasher {
                 + encode(salt) + "$" + encode(hash);
     }
 
+    // Hashes a password using the stored salt and compares the results.
     public static boolean matches(String password, String storedPassword) {
         if (password == null || storedPassword == null) {
             return false;
         }
 
-        if (!storedPassword.startsWith("pbkdf2$")) {
-            // Support accounts created before password hashing was added.
-            return MessageDigest.isEqual(
-                    password.getBytes(StandardCharsets.UTF_8),
-                    storedPassword.getBytes(StandardCharsets.UTF_8)
-            );
-        }
-
+        // Invalid or incomplete stored data cannot match a password.
         try {
             String[] parts = storedPassword.split("\\$", -1);
             if (parts.length != 4) {
@@ -57,6 +54,7 @@ public final class PasswordHasher {
         }
     }
 
+    // Performs the PBKDF2 key-derivation operation.
     private static byte[] deriveKey(
             String password,
             byte[] salt,
@@ -78,10 +76,12 @@ public final class PasswordHasher {
                     exception
             );
         } finally {
+            // Removes the password from the key specification when finished.
             keySpec.clearPassword();
         }
     }
 
+    // Converts binary data into Base64 text so it can be stored in a file.
     private static String encode(byte[] value) {
         return Base64.getEncoder().encodeToString(value);
     }

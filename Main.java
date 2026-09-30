@@ -4,14 +4,17 @@ import classes.Expense;
 import classes.FileManager;
 import classes.LoginAccount;
 import classes.RecurringExpense;
+import classes.RegulerExpense;
 import classes.User;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
+// Runs the command-line interface for the expense tracker.
 public class Main {
     private static final String[] CATEGORIES = {
         "Food",
@@ -24,6 +27,7 @@ public class Main {
         "Other"
     };
 
+    // Starts the application and displays the main account menu.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         CreateAccount accountCreator = new CreateAccount();
@@ -64,6 +68,7 @@ public class Main {
         scanner.close();
     }
 
+    // Collects login information and returns the authenticated user.
     private static User login(
             Scanner scanner,
             LoginAccount loginAccount
@@ -90,6 +95,7 @@ public class Main {
         return null;
     }
 
+    // Displays the expense-management menu after a successful login.
     private static void postLoginMenu(Scanner scanner, User user) {
         ArrayList<Expense> expenses = new ArrayList<>();
         String expenseFilename = user.getUsername() + ".txt";
@@ -132,6 +138,7 @@ public class Main {
         }
     }
 
+    // Creates and saves either a regular or recurring expense.
     private static void recordExpense(
             Scanner scanner,
             ArrayList<Expense> expenses,
@@ -162,15 +169,18 @@ public class Main {
         }
     }
 
+    // Collects input and creates a regular expense.
     private static Expense createSingleExpense(Scanner scanner) {
         System.out.println("\nRecord a single expense");
         String name = readRequired(scanner, "Expense name: ");
         double price = readPrice(scanner);
         String category = readCategory(scanner);
+        LocalDate date = readDate(scanner);
 
-        return new Expense(name, price, category);
+        return new RegulerExpense(name, price, category, date);
     }
 
+    // Collects input and creates a recurring expense.
     private static RecurringExpense createRecurringExpense(
             Scanner scanner
     ) {
@@ -178,11 +188,19 @@ public class Main {
         String name = readRequired(scanner, "Expense name: ");
         double price = readPrice(scanner);
         String category = readCategory(scanner);
+        LocalDate date = readDate(scanner);
         String frequency = readFrequency(scanner);
 
-        return new RecurringExpense(name, price, category, frequency);
+        return new RecurringExpense(
+                name,
+                price,
+                category,
+                date,
+                frequency
+        );
     }
 
+    // Displays all expenses currently loaded for the user.
     private static void viewExpenses(ArrayList<Expense> expenses) {
         System.out.println("\nYour expenses:");
 
@@ -196,6 +214,7 @@ public class Main {
         }
     }
 
+    // Confirms and deletes an expense selected by the user.
     private static void deleteExpense(
             Scanner scanner,
             ArrayList<Expense> expenses,
@@ -237,6 +256,7 @@ public class Main {
         }
     }
 
+    // Displays spending totals, averages, and category breakdowns.
     private static void viewAnalytics(Analytics analytics) {
         System.out.println("\nYour analytics:");
         System.out.printf(
@@ -273,6 +293,7 @@ public class Main {
         }
     }
 
+    // Prints a category-to-total-spending map.
     private static void printSpendingByCategory(
             Map<String, Double> spendingByCategory
     ) {
@@ -291,6 +312,7 @@ public class Main {
         }
     }
 
+    // Reads and validates a non-negative expense price.
     private static double readPrice(Scanner scanner) {
         while (true) {
             System.out.print("Price: ");
@@ -309,6 +331,7 @@ public class Main {
         }
     }
 
+    // Displays the category choices and returns the selected category.
     private static String readCategory(Scanner scanner) {
         while (true) {
             System.out.println("Category:");
@@ -330,6 +353,29 @@ public class Main {
         }
     }
 
+    // Reads an optional date, using today's date when the user presses Enter.
+    private static LocalDate readDate(Scanner scanner) {
+        while (true) {
+            System.out.print(
+                    "Date (YYYY-MM-DD, or press Enter for today): "
+            );
+            String input = scanner.nextLine().trim();
+
+            if (input.isBlank()) {
+                return LocalDate.now();
+            }
+
+            try {
+                return LocalDate.parse(input);
+            } catch (java.time.format.DateTimeParseException exception) {
+                System.out.println(
+                        "Please enter a date in YYYY-MM-DD format."
+                );
+            }
+        }
+    }
+
+    // Displays frequency choices and returns the selected frequency.
     private static String readFrequency(Scanner scanner) {
         while (true) {
             System.out.println("Frequency:");
@@ -362,6 +408,7 @@ public class Main {
         }
     }
 
+    // Collects validated account information and creates a new account.
     private static void createAccount(
             Scanner scanner,
             CreateAccount accountCreator
@@ -438,6 +485,7 @@ public class Main {
         }
     }
 
+    // Reads a required text value and rejects blank input.
     private static String readRequired(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);

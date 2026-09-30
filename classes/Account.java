@@ -7,15 +7,18 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+// Provides shared access to the user accounts file.
 public class Account {
     private final HashMap<String, User> users;
     private String filename;
 
+    // Creates an account manager that uses the default users file.
     public Account() {
         users = new HashMap<>();
         this.filename = "users.txt";
     }
 
+    // Reads all valid user records from the accounts file.
     public Map<String, User> readUsers() throws IOException {
         users.clear();
 
@@ -39,6 +42,7 @@ public class Account {
         return Collections.unmodifiableMap(users);
     }
 
+    // Provides subclasses with the file used to store user accounts.
     protected String getFilename() {
         return filename;
     }

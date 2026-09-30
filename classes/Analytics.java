@@ -8,13 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Calculates spending summaries from a user's expenses.
 public class Analytics {
     private final List<Expense> expenses;
 
+    // Creates an analytics object using the user's expense list.
     public Analytics(List<Expense> expenses) {
         this.expenses = expenses;
     }
 
+    // Calculates what percentage of total spending belongs to each category.
     public Map<String, Double> getCategoryPercentages() {
         Map<String, Double> categoryTotals = new HashMap<>();
         double totalSpending = 0;
@@ -42,6 +45,7 @@ public class Analytics {
         return categoryPercentages;
     }
 
+    // Calculates the average amount spent per month represented in the list.
     public double getAverageMonthlySpending() {
         Map<YearMonth, Double> monthlyTotals = new HashMap<>();
 
@@ -67,6 +71,7 @@ public class Analytics {
         return totalSpending / monthlyTotals.size();
     }
 
+    // Calculates the average amount spent per week represented in the list.
     public double getAverageWeeklySpending() {
         Map<LocalDate, Double> weeklyTotals = new HashMap<>();
 
@@ -94,6 +99,7 @@ public class Analytics {
         return totalSpending / weeklyTotals.size();
     }
 
+    // Calculates this week's spending grouped by category.
     public Map<String, Double> getWeeklySpendingByCategory() {
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(
@@ -120,6 +126,7 @@ public class Analytics {
         return weeklySpending;
     }
 
+    // Calculates this month's spending grouped by category.
     public Map<String, Double> getMonthlySpendingByCategory() {
         YearMonth currentMonth = YearMonth.now();
         LocalDate startOfMonth = currentMonth.atDay(1);
@@ -142,6 +149,7 @@ public class Analytics {
         return monthlySpending;
     }
 
+    // Calculates the total amount spent during the current week.
     public double getTotalWeeklySpending() {
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(
@@ -165,6 +173,7 @@ public class Analytics {
         return total;
     }
 
+    // Calculates the total amount spent during the current month.
     public double getTotalMonthlySpending() {
         YearMonth currentMonth = YearMonth.now();
         LocalDate startOfMonth = currentMonth.atDay(1);

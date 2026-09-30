@@ -1,4 +1,5 @@
 import classes.CreateAccount;
+import classes.Analytics;
 import classes.Expense;
 import classes.FileManager;
 import classes.LoginAccount;
@@ -8,6 +9,7 @@ import classes.User;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -92,6 +94,7 @@ public class Main {
         ArrayList<Expense> expenses = new ArrayList<>();
         String expenseFilename = user.getUsername() + ".txt";
         FileManager fileManager = new FileManager(expenseFilename, expenses);
+        Analytics analytics = new Analytics(expenses);
 
         if (new File(expenseFilename).exists()) {
             try {
@@ -106,8 +109,9 @@ public class Main {
             System.out.println("\nWhat would you like to do?");
             System.out.println("1. Record an expense");
             System.out.println("2. View expenses");
-            System.out.println("3. Delete an expense");
-            System.out.println("4. Quit");
+            System.out.println("3. View analytics");
+            System.out.println("4. Delete an expense");
+            System.out.println("5. Quit");
             System.out.print("Choose an option: ");
 
             String choice = scanner.nextLine().trim();
@@ -115,13 +119,14 @@ public class Main {
             switch (choice) {
                 case "1" -> recordExpense(scanner, expenses, fileManager);
                 case "2" -> viewExpenses(expenses);
-                case "3" -> deleteExpense(scanner, expenses, fileManager);
-                case "4" -> {
+                case "3" -> viewAnalytics(analytics);
+                case "4" -> deleteExpense(scanner, expenses, fileManager);
+                case "5" -> {
                     System.out.println("Goodbye!");
                     loggedIn = false;
                 }
                 default -> System.out.println(
-                        "Please choose 1, 2, 3, or 4."
+                        "Please choose 1, 2, 3, 4, or 5."
                 );
             }
         }
@@ -229,6 +234,60 @@ public class Main {
             System.out.println("Please enter a valid expense number.");
         } catch (IOException exception) {
             System.out.println("The expense could not be deleted.");
+        }
+    }
+
+    private static void viewAnalytics(Analytics analytics) {
+        System.out.println("\nYour analytics:");
+        System.out.printf(
+                "Total weekly spending: $%.2f%n",
+                analytics.getTotalWeeklySpending()
+        );
+        System.out.printf(
+                "Total monthly spending: $%.2f%n",
+                analytics.getTotalMonthlySpending()
+        );
+        System.out.printf(
+                "Average weekly spending: $%.2f%n",
+                analytics.getAverageWeeklySpending()
+        );
+        System.out.printf(
+                "Average monthly spending: $%.2f%n",
+                analytics.getAverageMonthlySpending()
+        );
+
+        System.out.println("\nWeekly spending by category:");
+        printSpendingByCategory(analytics.getWeeklySpendingByCategory());
+
+        System.out.println("\nMonthly spending by category:");
+        printSpendingByCategory(analytics.getMonthlySpendingByCategory());
+
+        System.out.println("\nCategory percentages:");
+        for (Map.Entry<String, Double> entry
+                : analytics.getCategoryPercentages().entrySet()) {
+            System.out.printf(
+                    "  %s: %.2f%%%n",
+                    entry.getKey(),
+                    entry.getValue()
+            );
+        }
+    }
+
+    private static void printSpendingByCategory(
+            Map<String, Double> spendingByCategory
+    ) {
+        if (spendingByCategory.isEmpty()) {
+            System.out.println("  No spending recorded.");
+            return;
+        }
+
+        for (Map.Entry<String, Double> entry
+                : spendingByCategory.entrySet()) {
+            System.out.printf(
+                    "  %s: $%.2f%n",
+                    entry.getKey(),
+                    entry.getValue()
+            );
         }
     }
 

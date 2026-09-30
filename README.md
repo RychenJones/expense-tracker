@@ -1,24 +1,21 @@
-# PLAN (remove later)
-
-* shows analytics for category percentages, average monthly, weekly costs for each category, total weekly, monthly spending
-
-
-
-
-
 # Expense Tracker
 
-Program written in Java to track expenses and help with budgeting.
+Program written in Java to record expenses and view helpful analytics to assist with financial awareness and budgeting.
 
 ## Instructions for Build and Use
 
-Steps to build and/or run the software:
+### Steps to build and/or run the software:
 
 1. Install a Java JDK
 2. Open project in VSCode or another IDE
-3. Run Main.java using VS Code's Run button (or the equivalent in another IDE)
+3. Run `Main.java` by entering these commands in the terminal:
 
-Instructions for using the software:
+   ```bash
+   javac -d out Main.java classes/*.java
+   java -cp out Main
+   ```
+
+### Instructions for using the software:
 
 1. First step here
 2.
@@ -29,8 +26,8 @@ Instructions for using the software:
 To recreate the development environment, you need the following software and/or libraries with the specified versions:
 
 * Java JDK 25
-* Extension Pack for Java (latest version)
-*
+* A Java-compatible IDE or terminal
+* Extension Pack for Java (latest version, optional; used for the VS Code Run button)
 
 ## Useful Websites to Learn More
 

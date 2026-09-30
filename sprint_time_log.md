@@ -38,7 +38,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/27/26  | 12:20    | TP     | Created repo, README, and PocketBase.      | 75          |
 | 9/28/26  | 10:15    | MTG    | Working on assignments.                    | 60          |
 | 9/28/26  | 9:20     | IM     | Built out main - account, log, and read.   | 60          |
-|          |          |        |                                            |             |
+| 9/29/26  | 11:35    | IM     |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |

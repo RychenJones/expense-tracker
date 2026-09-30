@@ -24,6 +24,21 @@ public class FileManager {
         }
     }
 
+    public void deleteExpense(int index) throws IOException {
+        if (index < 0 || index >= expenses.size()) {
+            throw new IndexOutOfBoundsException("Invalid expense index");
+        }
+
+        Expense deletedExpense = expenses.remove(index);
+
+        try {
+            write();
+        } catch (IOException exception) {
+            expenses.add(index, deletedExpense);
+            throw exception;
+        }
+    }
+
     public void read() throws IOException {
         ArrayList<Expense> loadedExpenses = new ArrayList<>();
 

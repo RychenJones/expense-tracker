@@ -106,7 +106,8 @@ public class Main {
             System.out.println("\nWhat would you like to do?");
             System.out.println("1. Record an expense");
             System.out.println("2. View expenses");
-            System.out.println("3. Quit");
+            System.out.println("3. Delete an expense");
+            System.out.println("4. Quit");
             System.out.print("Choose an option: ");
 
             String choice = scanner.nextLine().trim();
@@ -114,12 +115,13 @@ public class Main {
             switch (choice) {
                 case "1" -> recordExpense(scanner, expenses, fileManager);
                 case "2" -> viewExpenses(expenses);
-                case "3" -> {
+                case "3" -> deleteExpense(scanner, expenses, fileManager);
+                case "4" -> {
                     System.out.println("Goodbye!");
                     loggedIn = false;
                 }
                 default -> System.out.println(
-                        "Please choose 1, 2, or 3."
+                        "Please choose 1, 2, 3, or 4."
                 );
             }
         }
@@ -186,6 +188,47 @@ public class Main {
 
         for (int index = 0; index < expenses.size(); index++) {
             System.out.println((index + 1) + ". " + expenses.get(index));
+        }
+    }
+
+    private static void deleteExpense(
+            Scanner scanner,
+            ArrayList<Expense> expenses,
+            FileManager fileManager
+    ) {
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses have been recorded yet.");
+            return;
+        }
+
+        viewExpenses(expenses);
+        System.out.print("Enter the number of the expense to delete: ");
+
+        try {
+            int choice = Integer.parseInt(scanner.nextLine().trim());
+            int index = choice - 1;
+
+            if (index < 0 || index >= expenses.size()) {
+                System.out.println("Please choose a valid expense number.");
+                return;
+            }
+
+            Expense expense = expenses.get(index);
+            System.out.print("Delete \"" + expense.getName()
+                    + "\"? (y/n): ");
+            String confirmation = scanner.nextLine().trim();
+
+            if (!confirmation.equalsIgnoreCase("y")) {
+                System.out.println("Deletion cancelled.");
+                return;
+            }
+
+            fileManager.deleteExpense(index);
+            System.out.println("Expense deleted successfully.");
+        } catch (NumberFormatException exception) {
+            System.out.println("Please enter a valid expense number.");
+        } catch (IOException exception) {
+            System.out.println("The expense could not be deleted.");
         }
     }
 

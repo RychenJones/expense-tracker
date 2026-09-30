@@ -21,7 +21,9 @@ public class CreateAccount extends Account {
     ) throws IOException {
         try (PrintWriter writer = new PrintWriter(
                 new FileWriter(getFilename(), true))) {
-            writer.println(name + "|" + username + "|" + password);
+            writer.println(
+                    name + "|" + username + "|" + PasswordHasher.hash(password)
+            );
         }
     }
 

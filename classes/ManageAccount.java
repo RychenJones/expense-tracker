@@ -24,7 +24,11 @@ public class ManageAccount extends Account {
         updatedUsers.remove(username);
         updatedUsers.put(
                 newUsername,
-                new User(currentUser.getName(), newUsername, password)
+                new User(
+                        currentUser.getName(),
+                        newUsername,
+                        PasswordHasher.hash(password)
+                )
         );
         writeUsers(updatedUsers);
         return true;
@@ -45,7 +49,11 @@ public class ManageAccount extends Account {
         User currentUser = updatedUsers.get(username);
         updatedUsers.put(
                 username,
-                new User(currentUser.getName(), username, newPassword)
+                new User(
+                        currentUser.getName(),
+                        username,
+                        PasswordHasher.hash(newPassword)
+                )
         );
         writeUsers(updatedUsers);
         return true;
@@ -86,7 +94,8 @@ public class ManageAccount extends Account {
             String password
     ) {
         User user = users.get(username);
-        return user != null && user.getPassword().equals(password);
+        return user != null
+                && PasswordHasher.matches(password, user.getPassword());
     }
 
     private boolean validUsername(String username) {

@@ -15,7 +15,8 @@ public class LoginAccount extends Account {
         Map<String, User> users = readUsers();
         User user = users.get(username);
 
-        if (user != null && user.getPassword().equals(password)) {
+        if (user != null
+                && PasswordHasher.matches(password, user.getPassword())) {
             return user;
         }
 

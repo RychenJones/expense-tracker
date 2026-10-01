@@ -41,7 +41,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/29/26  | 11:35    | IM     | Analytics class, delete, and hashing.      | 50          |
 | 9/30/26  | 10:15    | MTG    | Presentations                              | 60          |
 | 9/30/26  | 2:45     | IM     | Learned about password storing, comments.  | 90          |
-|          |          |        |                                            |             |
+| 10/1/26  | 12:30    | IM     |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |

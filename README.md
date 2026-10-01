@@ -17,9 +17,19 @@ Program written in Java to record expenses and view helpful analytics to assist 
 
 ### Instructions for using the software:
 
-1. First step here
-2.
-3.
+1. Start the program using the build and run commands above.
+2. From the main menu, choose one of the following:
+   - `1` to log in
+   - `2` to create a new account
+   - `3` to exit
+3. After logging in, choose an option:
+   - `1` to record a single or recurring expense
+   - `2` to view saved expenses
+   - `3` to view spending analytics
+   - `4` to delete an expense
+   - `5` to quit
+4. When recording an expense, enter its name, price, category, date, and frequency if it is recurring.
+5. Expense data is automatically saved to a file named after the user's username. Usernames and hashed passwords are stored in `users.txt`.
 
 ## Development Environment
 
@@ -33,14 +43,15 @@ To recreate the development environment, you need the following software and/or 
 
 I found these websites useful in developing this software:
 
-* [Website Title](Link)
-*
-*
+* [YouTube](https://youtu.be/vOmZ4JFhRds?si=fUtwdACVfcvLiimz)
+* [W3Schools](https://www.w3schools.com/java/default.asp)
+* [Wikipedia](https://en.wikipedia.org/wiki/Java_(programming_language))
 
 ## Future Work
 
 The following items I plan to fix, improve, and/or add to this project in the future:
 
-* [ ] First thing here
-* [ ]
-* [ ]
+* [ ] Add logout feature
+* [ ] More robust input validation and restrictions
+* [ ] More advanced analytics
+* [ ] Graphical UI

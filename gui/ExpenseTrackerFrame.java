@@ -1,8 +1,8 @@
 package gui;
 
-import classes.CreateAccount;
-import classes.LoginAccount;
-import classes.User;
+import services.CreateAccount;
+import services.LoginAccount;
+import services.User;
 
 import javax.swing.JFrame;
 

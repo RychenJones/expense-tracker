@@ -1,6 +1,6 @@
 package gui;
 
-import classes.CreateAccount;
+import services.CreateAccount;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;

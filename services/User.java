@@ -1,4 +1,4 @@
-package classes;
+package services;
 
 // Stores the information associated with one user account.
 public class User {

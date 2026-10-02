@@ -1,6 +1,6 @@
 package gui;
 
-import classes.Analytics;
+import services.Analytics;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;

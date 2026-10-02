@@ -1,11 +1,12 @@
 package gui;
 
-import classes.Analytics;
-import classes.Expense;
-import classes.FileManager;
-import classes.ManageAccount;
-import classes.RecurringExpense;
-import classes.User;
+import services.Analytics;
+import services.DataPaths;
+import services.Expense;
+import services.FileManager;
+import services.ManageAccount;
+import services.RecurringExpense;
+import services.User;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -47,7 +48,7 @@ public class ExpensePanel extends JPanel {
         this.logoutAction = logoutAction;
         this.accountUpdatedAction = accountUpdatedAction;
         this.user = user;
-        String filename = user.getUsername() + ".txt";
+        String filename = DataPaths.expensesFile(user.getUsername()).toString();
         fileManager = new FileManager(filename, expenses);
         analytics = new Analytics(expenses);
         loadExpenses(filename);

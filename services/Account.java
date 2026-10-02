@@ -1,4 +1,4 @@
-package classes;
+package services;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,15 @@ public class Account {
     // Creates an account manager that uses the default users file.
     public Account() {
         users = new HashMap<>();
-        this.filename = "users.txt";
+        try {
+            DataPaths.ensureDataDirectory();
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Unable to create the data directory",
+                    exception
+            );
+        }
+        this.filename = DataPaths.usersFile().toString();
     }
 
     // Reads all valid user records from the accounts file.

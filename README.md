@@ -33,7 +33,7 @@ Program written in Java to record expenses and view helpful analytics to assist 
    - Log out
 4. When adding an expense, enter its name, price, category, date, and frequency if it is recurring.
 5. Account settings allow users to change their username, change their password, or delete their account.
-6. Expense data is automatically saved to a file named after the user's username. Usernames and hashed passwords are stored in `users.txt`.
+6. The application automatically creates a `data` folder. Expense data is saved to a file named after the user's username inside that folder, and usernames with hashed passwords are stored in `data/users.txt`.
 
 ## Development Environment
 
@@ -58,3 +58,4 @@ The following items I plan to fix, improve, and/or add to this project in the fu
 * [ ] More robust input validation and restrictions
 * [ ] More advanced analytics
 * [ ] Improve graphical UI styling and layout
+* [ ] Better storage than txt (JSON, CSV, or database)

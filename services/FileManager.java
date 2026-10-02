@@ -1,4 +1,4 @@
-package classes;
+package services;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -20,6 +20,7 @@ public class FileManager {
 
     // Writes every expense in the list to the expense file.
     public void write() throws IOException {
+        DataPaths.ensureDataDirectory();
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Expense expense : expenses) {
                 writer.println(expense);

@@ -1,4 +1,4 @@
-package classes;
+package services;
 import java.time.LocalDate;
 
 // Represents an expense that repeats on a regular schedule.

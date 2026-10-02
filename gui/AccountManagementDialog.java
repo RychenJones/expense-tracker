@@ -1,7 +1,8 @@
 package gui;
 
-import classes.ManageAccount;
-import classes.User;
+import services.DataPaths;
+import services.ManageAccount;
+import services.User;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -98,8 +99,8 @@ public final class AccountManagementDialog {
             return;
         }
 
-        Path oldExpenseFile = Path.of(user.getUsername() + ".txt");
-        Path newExpenseFile = Path.of(newUsername + ".txt");
+        Path oldExpenseFile = DataPaths.expensesFile(user.getUsername());
+        Path newExpenseFile = DataPaths.expensesFile(newUsername);
         if (Files.exists(newExpenseFile)) {
             GuiMessages.showError(
                     parent,
@@ -260,7 +261,7 @@ public final class AccountManagementDialog {
             }
 
             try {
-                Files.deleteIfExists(Path.of(user.getUsername() + ".txt"));
+                Files.deleteIfExists(DataPaths.expensesFile(user.getUsername()));
             } catch (IOException exception) {
                 GuiMessages.showError(
                         parent,

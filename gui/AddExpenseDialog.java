@@ -1,8 +1,8 @@
 package gui;
 
-import classes.Expense;
-import classes.RecurringExpense;
-import classes.RegulerExpense;
+import services.Expense;
+import services.RecurringExpense;
+import services.RegulerExpense;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;

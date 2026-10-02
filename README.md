@@ -6,30 +6,34 @@ Program written in Java to record expenses and view helpful analytics to assist 
 
 ### Steps to build and/or run the software:
 
-1. Install a Java JDK
-2. Open project in VSCode or another IDE
-3. Run `Main.java` by entering these commands in the terminal:
+1. Install Java JDK 25 or later.
+2. Open the project in VSCode or another Java-compatible IDE.
+3. Compile all application source files from the project folder:
 
    ```bash
-   javac -d out Main.java classes/*.java
+   javac -d out Main.java classes/*.java gui/*.java
+   ```
+
+4. Start the graphical application:
+
+   ```bash
    java -cp out Main
    ```
 
 ### Instructions for using the software:
 
 1. Start the program using the build and run commands above.
-2. From the main menu, choose one of the following:
-   - `1` to log in
-   - `2` to create a new account
-   - `3` to exit
-3. After logging in, choose an option:
-   - `1` to record a single or recurring expense
-   - `2` to view saved expenses
-   - `3` to view spending analytics
-   - `4` to delete an expense
-   - `5` to quit
-4. When recording an expense, enter its name, price, category, date, and frequency if it is recurring.
-5. Expense data is automatically saved to a file named after the user's username. Usernames and hashed passwords are stored in `users.txt`.
+2. Log in using an existing account, or select **Create an account**.
+3. From the expense screen, use the available buttons to:
+   - Add a regular or recurring expense
+   - View saved expenses in the table
+   - Delete a selected expense
+   - View spending analytics
+   - Open account settings
+   - Log out
+4. When adding an expense, enter its name, price, category, date, and frequency if it is recurring.
+5. Account settings allow users to change their username, change their password, or delete their account.
+6. Expense data is automatically saved to a file named after the user's username. Usernames and hashed passwords are stored in `users.txt`.
 
 ## Development Environment
 
@@ -51,7 +55,6 @@ I found these websites useful in developing this software:
 
 The following items I plan to fix, improve, and/or add to this project in the future:
 
-* [ ] Add logout feature
 * [ ] More robust input validation and restrictions
 * [ ] More advanced analytics
-* [ ] Graphical UI
+* [ ] Improve graphical UI styling and layout

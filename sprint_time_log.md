@@ -42,7 +42,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/30/26  | 10:15    | MTG    | Presentations                              | 60          |
 | 9/30/26  | 2:45     | IM     | Learned about password storing, comments.  | 90          |
 | 10/1/26  | 12:30    | IM     | Worked on README, read from W3 and Wiki.   | 30          |
-| 10/1/26  | 10:50    | IM     |   |             |
+| 10/1/26  | 10:50    | IM     | Divided main into classes, made a GUI.     | 60          |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 

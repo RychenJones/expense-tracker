@@ -43,7 +43,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 9/30/26  | 2:45     | IM     | Learned about password storing, comments.  | 90          |
 | 10/1/26  | 12:30    | IM     | Worked on README, read from W3 and Wiki.   | 30          |
 | 10/1/26  | 10:50    | IM     | Divided main into classes, made a GUI.     | 60          |
-|          |          |        |                                            |             |
+| 10/2/26  | 10:15    | TP     | Met in class.                              | 60          |
 |          |          |        |                                            |             |
 
 
@@ -53,7 +53,7 @@ _Note: Add more rows as needed._
 
 |Categroy                       |Total Time (Hours:Minutes)|
 |-------------------------------|:------------------------:|
-|IM - Individual Module         | 10:00 / 10:00             |
-|TP - Team Project              | 2:15 / 4:00              |
+|IM - Individual Module         | 10:00 / 10:00            |
+|TP - Team Project              | 3:15 / 4:00              |
 |MTG - Class Meetings           | 4:00 / 4:00              |
-|**TOTAL**                      | 16:15 / 18:00            |
+|**TOTAL**                      | 17:15 / 18:00            |
